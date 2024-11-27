@@ -1,9 +1,10 @@
 import numpy as np
 import pandas as pd
 import nltk
+from transformers import pipeline
 # Uncomment the following lines if running for the first time
-# nltk.download('punkt')
-# nltk.download('stopwords')
+nltk.download('punkt')
+nltk.download('stopwords')
 from nltk.tokenize import sent_tokenize
 from nltk.corpus import stopwords
 from sklearn.metrics.pairwise import cosine_similarity
@@ -41,25 +42,17 @@ def summarize_text(article_text):
     if not sentences:
         return "No content to summarize."
 
-    # Determine summary length (35% of total sentences)
-    summary_length = max(1, math.ceil(len(sentences) * 0.35))
+    # Determine summary length (20% of total sentences)
+    summary_length = max(1, math.ceil(len(sentences) * 0.2))
 
-    # Load or create word embeddings
-    embedding_file = os.path.join(THIS_FOLDER, 'dict.pickle')
-    if os.path.exists(embedding_file):
-        with open(embedding_file, 'rb') as f:
-            word_embeddings = pickle.load(f)
-    else:
-        word_embeddings = {}
-        glove_file = os.path.join(THIS_FOLDER, 'model', 'glove.6B.100d.txt')
-        with open(glove_file, 'r', encoding='utf-8') as f:
-            for line in f:
-                parts = line.split()
-                word = parts[0]
-                embeddings = np.asarray(parts[1:], dtype='float32')
-                word_embeddings[word] = embeddings
-        with open(embedding_file, 'wb') as f:
-            pickle.dump(word_embeddings, f)
+    word_embeddings = {}
+    glove_file = os.path.join(THIS_FOLDER, 'model', 'glove.6B.100d.txt')
+    with open(glove_file, 'r', encoding='utf-8') as f:
+        for line in f:
+            parts = line.split()
+            word = parts[0]
+            embeddings = np.asarray(parts[1:], dtype='float32')
+            word_embeddings[word] = embeddings
 
     # Preprocess sentences
     clean_sentences = pd.Series(sentences).str.replace("[^a-zA-Z]", " ", regex=True).str.lower()
@@ -67,6 +60,15 @@ def summarize_text(article_text):
     # Remove stopwords
     stop_words = set(stopwords.words('english'))
     clean_sentences = [remove_stopwords(s.split(), stop_words) for s in clean_sentences]
+
+    cleaned_text = ' '.join(clean_sentences)
+
+    summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
+
+    summary = summarizer(cleaned_text, max_length=summary_length, min_length=10, do_sample=False)
+    
+    # Extract the summary text
+    return summary[0]['summary_text']
 
     # Generate sentence vectors
     sentence_vectors = []

@@ -1,11 +1,10 @@
-from flask import Flask, request, render_template, redirect, url_for, flash
+from flask import Flask, request, render_template, flash
 import os
 from werkzeug.utils import secure_filename
 
 from summarize import summarize_text
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'  # Replace with a secure secret key
 
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'docx'}
@@ -46,36 +45,34 @@ def extract_text(file_path):
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
+    summary = ""
     if request.method == 'POST':
         # Check if a file is provided
         if 'file' not in request.files:
             flash('No file provided.')
-            return redirect(request.url)
-        file = request.files['file']
-        # Check if filename is valid
-        if file.filename == '':
-            flash('No file selected.')
-            return redirect(request.url)
-        # Check file type
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            # Save the file
-            file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-            file.save(file_path)
-
-            # Extract text from the file
-            text = extract_text(file_path)
-            if not text.strip():
-                flash('Failed to extract text from the document.')
-                return redirect(request.url)
-
-            # Summarize the text
-            summary = summarize_text(text)
-            return render_template('summary.html', summary=summary)
         else:
-            flash('Invalid file type. Allowed types are txt, pdf, docx.')
-            return redirect(request.url)
-    return render_template('upload.html')
-    
+            file = request.files['file']
+            # Check if filename is valid
+            if file.filename == '':
+                flash('No file selected.')
+            elif file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                # Save the file
+                file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+                file.save(file_path)
+
+                # Extract text from the file
+                text = extract_text(file_path)
+                if not text.strip():
+                    flash('Failed to extract text from the document.')
+                else:
+                    # Summarize the text
+                    summary = summarize_text(text)
+                    # summary = text
+            else:
+                flash('Invalid file type. Allowed types are txt, pdf, docx.')
+
+    return render_template('main.html', summary=summary)
+
 if __name__ == '__main__':
     app.run(debug=True)

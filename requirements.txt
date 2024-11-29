@@ -1,9 +1,7 @@
 numpy
 pandas
 nltk
-transformers
 scikit-learn
 networkx
 flask
 Werkzeug
-torch

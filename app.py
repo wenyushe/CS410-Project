@@ -2,7 +2,7 @@ from flask import Flask, request, render_template, flash
 import os
 from werkzeug.utils import secure_filename
 
-from summarize import summarize_text
+from summarize import generate_summary
 
 app = Flask(__name__)
 
@@ -67,8 +67,7 @@ def upload_file():
                     flash('Failed to extract text from the document.')
                 else:
                     # Summarize the text
-                    summary = summarize_text(text)
-                    # summary = text
+                    summary = generate_summary(text)
             else:
                 flash('Invalid file type. Allowed types are txt, pdf, docx.')
 

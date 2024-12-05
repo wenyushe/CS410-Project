@@ -1,0 +1,184 @@
+A Text-Mining Approach to Evaluate the Importance of
+Information Systems Research Themes
+Abstract: This study combines text-mining techniques and exploratory factor analysis to
+identify significant research themes in the information systems (IS) field during the last
+decade. We analyzed 483 papers that have been published in the Management Information
+Systems Quarterly (MISQ) journal since 2010. We found that the most published themes in
+the MISQ are: (1) the impact of information systems and digital innovation on
+organizational performance, (2) the influence of computer-mediated communication and
+social media within individuals and groups, (3) information systems development and
+project management, (4) design science, and (5) decision making and information Systems.
+We also perform econometric analysis to study the effect of these research themes on the
+number of downloads, citations and reads in Google Scholar (SC), ResearchGate (RG),
+and the Association for Information Systems (AIS) library. This study shows that “the
+impact of information systems and digital innovation on organizational performance" and
+“the influence of computer-mediated communication and social media within individuals
+and groups” are positively associated with the number of reads, downloads, and citations.
+However, “information systems development and project management” is negatively
+associated with the number of reads, downloads, and citations. The methodology used here
+can be implemented in other areas of research by journal editors and research institutions
+to identify the most sought-after areas of future research. Also, understanding the most
+relevant themes of IS research can help universities revise their IS doctorate curriculum to
+better meet the needs of today's academic workforce.
+Keywords: Text Mining, IS Research Themes, Social Media, IS Curriculum
+2
+1. Introduction
+The study of research themes in any academic discipline is essential to investigating
+changes in these themes and the plethora of emerging challenges (Palvia, Kakhki, Ghoshal,
+Uppala, & Wang, 2015). Leading academic journals play an essential role in addressing this need.
+In response, premium business journals have published similar studies to inform scholars about
+how the prominent research themes in their discipline have evolved (Donthu, Gremler, Kumar, &
+Pattnaik, 2020; Lamberton & Stephen, 2016; Linnenluecke, Marrone, & Singh, 2020). Similar
+studies are also required in the Information Systems (IS) discipline due to the rapid changes in
+Information Technology and its corresponding societal impacts (Goyal, Ahuja, & Guan, 2018).
+This study, particularly, is motivated by two important gaps in the prior research. First,
+previous studies that have investigated IS themes are somewhat limited. They either analyze a
+specific research area in IS or use traditional methodologies (e.g., content analysis) to examine IS
+themes (Hughes et al., 2019; Palvia et al., 2015; Senyo, Addae, & Boateng, 2018). Using content
+analysis as a research tool is a labor-intensive process, which makes it challenging to analyze a
+vast number of journal articles. As such, there is a need to use data-driven approaches to evaluate
+IS research themes (Goyal et al., 2018; Okoli, 2015). Second, the emergence of social media and
+social networking platforms has transformed the way individuals interact with one another
+(Aghakhani, Karimi, & Salehan, 2018). This transformation is also evident in the online
+community of practice, particularly scholar communities (Yu, Wu, Alhalabi, Kao, & Wu, 2016).
+Researchers usually rely on sharing their research output to gain peer recognition or funding
+opportunities (Mas-Bleda, Thelwall, Kousha, & Aguillo, 2014). The emergence of social platforms
+has enabled researchers to conveniently connect with their peers and collaborate and to promote
+their research. For instance, someone can promote his/her research by sharing a link to his/her
+3
+recently published article(s) on LinkedIn. ResearchGate is an example of a professional social
+networking service for scholars that facilitates peer recognition by allowing researchers to follow
+each other, share their projects, and receive feedback on their research.
+Understanding the drivers of peer recognition and attention in online communities has been
+an important research topic in IS (Bhattacharyya, Banerjee, Bose, & Kankanhalli, 2020). For
+instance, in the context of online consumer reviews, studies use text mining and natural language
+processing techniques to examine how the content of online reviews can predict review readership
+or review helpfulness (Lah & Dahlan, 2017; Siering, Muntermann, & Rajagopalan, 2018). The
+same analogy can be used in the scholars' online social community, where citation counts or
+readership counts can signal the members' reputation and peer recognition. This paper aims to fill
+these gaps by addressing the following research questions:
+• RQ1: How can IS research themes be evaluated using big data analytics?
+• RQ2: What are the major IS research themes based on big data analytics?
+• RQ3: What is the association between IS research themes and the number of reads,
+citations, and downloads?
+To address these questions, we propose a data-driven method that combines text mining
+and econometrics models to identify the major IS research themes and examine their effect on
+citation counts, download counts, and readership counts in various platforms. Our sample includes
+483 papers published in MISQ since 2010. For each article in our sample, we collected the citation
+counts from Google Scholar and ResearchGate. We also obtained download counts from the AIS
+library and readership counts from ResearchGate. This study contributes to the field by extending
+the notion of IS research themes to the context of attention and peer recognition in the online social
+platforms of scholars. This study also informs scholars about the major research themes in the
+4
+Information Systems (IS) discipline and their association with the number of citations, number of
+reads, and number of downloads in the Google Scholar, ResearchGate, and the AIS Library.
+2.Literature
+Any science's business is to develop new understandings of past, persisting, or newly
+identified natural phenomena (Jackson, 1996). In this quest, a series of meta-scientific methods
+are developed to provide insights into the main scientific themes and identify features of theories
+that predict their long-term survival (Faust & Meehl, 2002). Previous research suggests that
+theme analysis plays an essential role in forming perceptions (Linell, 2010) and influencing how
+decisions are made (Putnam & Cooren, 2004). There is evidence of using theme analysis outside
+the realm of scientific research. For example, organizational scholars have demonstrated that
+theme analysis can help them understand drivers of corporate sustainability (Sodhi & Tang,
+2018). It is also used to describe mergers and acquisitions (Christofi, Leonidou, & Vrontis,
+2017), corporate restructuring (Sonenshein, 2010), organizational innovations (Bartel & Garud,
+2009), and strategy formulations (Barry & Elmes, 1997). Several other studies use annual reports
+(Subramanian, Insley, & Blackwell, 1993), shareholder letters (Jameson, 2000), press releases
+(Henry, 2008), and corporate websites (Pollach, 2003) as the object of a theme analysis.
+Research theme analysis has also been an essential topic in IS research and education,
+mainly due to the rapid technological advances in Information Technology (e.g., the emergence
+of social media or the shift toward AI and big data analytics) and its corresponding impact on
+individuals and organizations. Broadly, theme analysis in IS can be classified into two major
+streams in terms of adopted methodologies. First, early studies have used literature review and
+meta-analysis methods to examine the research themes in a specific domain of IS or to discover
+primary IS research from papers published in major IS journals. For instance, Nevo and
+5
+Kotlarsky (2020) have analyzed the major research published on crowdsourcing in information
+systems literature. Similar studies also have been done in other IS fields, such as analyzing the
+effect of Information Technology on productivity (Appiahene, Ussiph, & Missah, 2018) and
+evaluating health information systems research (Haried, Claybaugh, & Dai, 2019). Other studies
+in this line of work have examined the foci of IS research and have discovered the core research
+themes. For instance, Palvia et al. (2015) have conducted a meta-analysis on seven major IS
+journals and found that electronic commerce is a significant research theme and survey analysis
+is the dominant research methodology. In a similar vein, Mazaheri, Lagzian, and Hemmat (2020)
+have reported that electronic commerce/business, information systems research, and IS
+usage/adoption are the dominant research topics in IS.
+The second stream of research has adopted objective methodologies such as quantitative
+content analysis and text mining to address the lack of accuracy and labor-intensiveness of the
+literature review method (Goyal et al., 2018; Okoli, 2015; Palvia et al., 2015). Weigel, Rainer Jr,
+Hazen, Cegielski, and Ford (2013) have used a quantitative content analysis method to explore
+2,188 papers published over a ten-year period in medical informatics, information systems, as
+well as medical journals and discovered significant themes and sub-themes in this domain.
+Sidorova, Evangelopoulos, Valacich, and Ramakrishnan (2008) have used Latent Semantic
+Analysis (LSA) on the abstracts of research papers published in MISQ, ISR, and JMIS over a
+ten-year period and identified five core research themes. Similarly, Goyal et al. (2018) have used
+the LSA method on the abstracts of papers published in MISQ, ISR, JMIS, and JAIS to identify
+the emergent research themes in IS and the specific research theme that a particular journal
+desires most.
+6
+Our research intends to contribute to these prior studies in two important ways. First, the
+literature suggests that text mining has become a prominent method to objectively identify IS
+research themes. While previous text mining studies have mainly used the abstracts of the papers
+as the main text corpus in their analysis, this study uses the entire journal text. Also, our study
+proposes a novel analytical framework by integrating a modified version of MapReduce with
+Exploratory Factor Analysis to identify essential keywords that will be used later to build
+research theme dictionaries using the Linguistic Inquiry and Word Count (LIWC) program.
+Second, our research will extend the notion of theme analysis to peer recognition in scholars'
+online social communities. We will notably examine how the research themes are associated
+with citation counts, download counts, and readership on Google Scholar, the AIS Library, and
+ResearchGate platforms.
+3. Methodology
+Text mining is a variety of techniques used to discover patterns in a collection of text
+documents (Feldman & Sanger, 2007). Text mining has been used successfully in theme analysis
+to identify patterns and quantify emerging keywords, providing insight into the structure,
+context, and trends of themes (Galati & Bigliardi, 2019; Nie & Sun, 2017; Shin et al., 2018).
+When combined with Big Data platforms and techniques, text mining becomes a powerful
+approach in theme analysis. Specifically, the methodology proposed in this study encompasses
+the following steps.
+Step 1: Data Collection
+The analysis source is the full text of the 482 articles published in MISQ since 2010. The
+articles are downloaded from the AIS Library. The full text and keywords for articles are
+organized into folders. For longitudinal studies, the information is classified into subfolders
+7
+according to the publication year. Also, for every article in our corpus, we have collected the
+citation counts from Google Scholar, download counts from AIS library, and citation counts and
+readership counts from ResearchGate.
+Step 2: Apply MapReduce to count keyword frequencies
+At this step, a modified version of the MapReduce program is used to count the
+frequencies for each keyword. The traditional MapReduce algorithm (Dean & Ghemawat, 2008)
+is modified to measure the frequency of words found in a full-text corpus, using the authors of
+the published articles' keyword list.
+Step 3: Use the Pareto principle to reduce the number of keywords
+The exploratory factor analysis that follows requires a small number of measurable
+variables or keywords. Following the Pareto principle (Arnold, 2015), only the most frequently
+used keywords (e.g., the top 20 percent) are used in the analysis. The 80/20 principle is only a
+rule of thumb and may not apply in all circumstances, although an approximate application of the
+rule is recommended.
+Step 4: Perform exploratory factor analysis
+Each file represents the data points for the factor analysis (e.g., journal article). Once the
+most frequent keywords are identified, the frequency index fij of each keyword i in article j is
+calculated as follows:
+𝒇𝒊𝒋 =
+𝑭𝒊𝒋
+𝑻𝒋
+where Fij is the frequency of the keyword i in article j, and 𝑇j is the total number of words in
+article j. When applying factor analysis in this methodology, it is essential to make sure that the
+sample size is adequate, i.e., the number of text files is significantly large. One must also ensure
+that at least three variables are associated with each of the expected factor categories or themes.
+8
+A theme is determined by the similarity between the underlying variables (keywords). However,
+it is suggested that the total number of variables used to identify themes should be no more than
+one-third of the sample size. Like other cases in factor analysis, Bartlett’s test must be
+significant, where a small value of significance (p< 0.05) indicates that factor analysis produces
+useful results from the data (Snedecor & Cochran, 1989).
+Table 1 shows the output of the factor analysis. It shows the loading coefficients for each
+keyword into major factors or themes. We omitted loading values less than 0.35 for clarity of
+representation. As shown, the factor analysis yields five factors based on the top frequent
+keywords from Step 4. These factors and their corresponding keywords represent the major
+themes in our data. The authors have labeled these factors based on their similar research themes
+in IS as follows: Factor (1) The Impact of Information Systems and Digital Innovation on
+Organizational Performance; Factor (2) The Influence of Computer-Mediated Communication
+and Social Media within Individuals and Groups; Factor (3) Information Systems Development
+and Project Management; Factor (4) Design Science; and Factor (5) Decision Making and
+Information Systems.
